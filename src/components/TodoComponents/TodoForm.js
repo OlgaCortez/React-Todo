@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class TodoForm extends React.Component {
     constructor() {
         super();
@@ -26,10 +27,10 @@ class TodoForm extends React.Component {
                 type="text"
                 value={this.todo}
                 name="todo"
-                placeholder="...todo"
+                placeholder="...add todo"
                 onChange={this.handleChanges}
                 />
-                <button>Add Todo</button>
+                <button className="add-btn">Add Todo <i class="fas fa-plus"></i></button>
             </form>
         );
     }

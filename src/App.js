@@ -1,22 +1,34 @@
 import React from 'react';
+import {Route, Link} from 'react-router-dom';
+import TodoHome from './components/TodoComponents/TodoHome'; 
 import TodoList from './components/TodoComponents/TodoList';
 import TodoForm from './components/TodoComponents/TodoForm';
 import './components/TodoComponents/Todo.css';
 
 const tasks = [
   {
-    name: 'Do some CodeWars challenges',
+    name: 'Do some Codewars challenges',
     id: 1,
     completed: false
   },
   {
-    name: 'Study Advanced React',
+    name: 'Study advanced react',
     id: 2,
     completed: false
   },
   {
-    name: 'Take JavaScript refresher course',
+    name: 'Take JavaScript refresher courses',
     id: 3,
+    completed: false
+  },
+  {
+    name: 'Start side projects',
+    id: 4,
+    completed: false
+  },
+  {
+    name: 'Redisign my portfolio',
+    id: 5,
     completed: false
   }
 ];
@@ -71,16 +83,19 @@ clearCompleted = () => {
   render() {
     return (
       <div className="App">
-          <div>
-            <h2>Welcome to your Todo App!</h2>
-            <TodoForm addTodo={this.addTodo} />
-          </div>
-            <TodoList
-            tasks={this.state.tasks}
-            toggleTodo={this.toggleTodo}
-            clearCompleted={this.clearCompleted}
-            />
-          </div>
+
+        <Route exact path="/" component={TodoHome} />
+
+
+        <Route exact path="/todo-list" render={(props) => 
+        <TodoForm addTodo={this.addTodo}/> } />
+        
+        <Route exact path="/todo-list" render={(props) => 
+        <TodoList tasks={this.state.tasks}
+         toggleTodo={this.toggleTodo}
+         clearCompleted={this.clearCompleted} /> } />
+             
+      </div>
 
     );
   }
